@@ -83,13 +83,26 @@ router.post('/postComment', (req, res, next) => {
     })
 })
 
-router.post('/delete', (req, res, next)=>{
-    console.log(req.body);
+router.post('/delete', (req, res, next) => {
+
     let commentId = req.body.commentId;
     let articleId = req.body.articleId;
-    comment.remove({'_id':commentId}, err=>{
-        if(err){console.log(err)}
-        
+
+    comment.remove({
+        '_id': commentId
+    }, err => {
+        if (err) {
+            console.log(err)
+        }
+        article.update({
+            '_id': articleId
+        }, {
+            $pull: {
+                comments: commentId
+            }
+        }, function (err, doc) {
+            res.redirect('/')
+        })
     })
 })
 module.exports = router;
