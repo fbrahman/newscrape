@@ -40,19 +40,20 @@ app.use('/', htmlRoute);
 // Requiring our models for syncing
 // =============================================================
 const article = require('./models/Articles');
+const comment = require('./models/Comments');
 let newsdb = 'mongodb://localhost/newsdb';
-let scraper = require('./db/articleScaper');
+// let scraper = require('./db/articleScaper');
 
 mongoose.connect(newsdb, {
     useMongoClient:true
 });
 
-scraper.articleScraper().then((articles)=>{
-    article.create(articles).then((err, results)=>{
-        if (err){console.log(err)}
-        console.log(results);
-    })
-});
+// scraper.articleScraper().then((articles)=>{
+//     article.create(articles).then((err, results)=>{
+//         if (err){console.log(err)}
+//         console.log(results);
+//     })
+// });
 
 // Starting our Express app
 // =============================================================

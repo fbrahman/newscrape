@@ -15,7 +15,12 @@ let ArticleSchema = new Schema({
     },
     img: String,
     blurb: String, 
-    category: String
+    category: String, 
+    author: String, 
+    comments:[{
+        type: Schema.ObjectId,
+        ref:'Comment'
+    }]
 })
 
 module.exports = mongoose.model('Article', ArticleSchema);

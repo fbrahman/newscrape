@@ -23,6 +23,7 @@ exports.articleScraper = () => {
                 let img = $(this).parent().parent().next().find('img').prev().attr('data-srcset');
                 let blurb = $(this).parent().parent().next().children('div').children('p').text();
                 let category = $(this).parent().parent().parent().find(".meta__text").text();
+                let author = $(this).parent().next().children().children(".author").text()
 
                 let article = {
                     title: title,
@@ -30,7 +31,8 @@ exports.articleScraper = () => {
                     url: url,
                     img: img,
                     blurb: blurb,
-                    category: category
+                    category: category,
+                    author:author
                 }
                 parsedResults.push(article);
             })
