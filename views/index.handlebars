@@ -1,29 +1,35 @@
 {{#each results}}
-    <div id="article">
+<div id="article" class="card horizontal">
+    <div class="card-image">
         <img src={{img}} alt="article picture" id="artPic">
-        <a href="{{url}}">{{title}}</a>
-        <div>{{author}}</div>
-        <div id="artDate">{{pubDate}}</div>
-        <div id="artBlurb">{{blurb}}</div>
-        <div id="artComCount">{{comments.length}}</div>
+    </div>
+    <div class="card-stacked">
+        <div class="card-content">
+            <a href="{{url}}">{{title}}</a>
+            <div>{{author}}</div>
+            <div id="artDate">{{pubDate}}</div>
+            <div id="artBlurb">{{blurb}}</div>
+            <div id="artComCount">{{comments.length}}</div>
+        </div>
         <a class="expand" href="javascript:toggle({{id}},'expand')">expand</a>
         <div id={{id}}>
             {{#each comments}}
-                <div>{{user}}</div>
-                <div>{{body}}</div>
-                <div>{{date}}</div>
-                <form action="/delete" method="POST">
-                    <input type="hidden" name="commentId" value={{id}}>
-                    <input type="hidden" name="articleId" value={{../id}}>
-                    <button type="submit">Delete</button>
-                </form>
+            <div>{{user}}</div>
+            <div>{{body}}</div>
+            <div>{{date}}</div>
+            <form action="/delete" method="POST">
+                <input type="hidden" name="commentId" value={{id}}>
+                <input type="hidden" name="articleId" value={{../id}}>
+                <button type="submit">Delete</button>
+            </form>
             {{/each}}
             <form action="/postComment" method="POST">
-                <input type="hidden" name="articleId" value= {{id}}>
+                <input type="hidden" name="articleId" value={ {id}}>
                 <input type="text" name="username">
                 <input type="text" name="body">
                 <button type="submit">submit</button>
             </form>
         </div>
     </div>
+</div>
 {{/each}}
