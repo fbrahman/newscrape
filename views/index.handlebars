@@ -9,26 +9,41 @@
             <div>{{author}}</div>
             <div id="artDate">{{pubDate}}</div>
             <div id="artBlurb">{{blurb}}</div>
-            <div id="artComCount">{{comments.length}}</div>
+            <div id="artComCount" class="right">{{comments.length}} Comments </div>
         </div>
-        <a class="expand" href="javascript:toggle({{id}},'expand')">expand</a>
-        <div id={{id}}>
-            {{#each comments}}
-            <div>{{user}}</div>
-            <div>{{body}}</div>
-            <div>{{date}}</div>
-            <form action="/delete" method="POST">
-                <input type="hidden" name="commentId" value={{id}}>
-                <input type="hidden" name="articleId" value={{../id}}>
-                <button type="submit">Delete</button>
-            </form>
-            {{/each}}
-            <form action="/postComment" method="POST">
-                <input type="hidden" name="articleId" value={ {id}}>
-                <input type="text" name="username">
-                <input type="text" name="body">
-                <button type="submit">submit</button>
-            </form>
+        <div class="card-action">
+            <ul class="collapsible" data-collapsible="expandable">
+                <li>
+                    <div class="collapsible-header">
+                        <a id="expand">Expand</a>
+                    </div>
+                    <div class="collapsible-body">
+                        {{#each comments}}
+                        <div>{{user}}</div>
+                        <div>{{body}}</div>
+                        <div>{{date}}</div>
+                        <form action="/delete" method="POST">
+                            <input type="hidden" name="commentId" value={{id}}>
+                            <input type="hidden" name="articleId" value={{../id}}>
+                            <button type="submit">Delete</button>
+                        </form>
+                        {{/each}}
+                        <form action="/postComment" method="POST">
+
+                            <input type="hidden" name="articleId" value={{id}}>
+                            <div class="input-field">
+                                <input type="text" name="username" id="username">
+                                <label for="username">Name</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" name="body" id="body">
+                                <label for="body">Comment</label>
+                            </div>
+                            <button type="submit" class="btn">submit</button>
+                        </form>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
