@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>News Scraper</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    {{!--
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> --}} {{!--
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css"> --}}
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
 </head>
+
 <body>
+    <div class="container">
     <header>
-        <div>
-            News Feed!
-        </div>
-        <div>
-            <form action="/scrape">
-                <button id="scrape" type="submit">Check for new articles</button>
-            </form>
-        </div>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">News Feed!</a>
+                <ul id="nav-mobile" class="right">
+                    <li><a href="/scrape">Check for new articles</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
-    {{{ body }}}
-    <script src="assets/js/app.js"></script>
+    {{{ body }}} 
+    </div>
+    {{!--
+    <script src="assets/js/app.js"></script> --}}
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
 </body>
 
 </html>
