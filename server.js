@@ -44,16 +44,11 @@ const comment = require('./models/Comments');
 let newsdb = 'mongodb://localhost/newsdb';
 // let scraper = require('./db/articleScaper');
 
-mongoose.connect(newsdb, {
-    useMongoClient:true
-});
+mongoose.connect('mongodb://heroku_j98vqdl6:a025krggacj74la906pnadk7oo@ds157873.mlab.com:57873/heroku_j98vqdl6');
 
-// scraper.articleScraper().then((articles)=>{
-//     article.create(articles).then((err, results)=>{
-//         if (err){console.log(err)}
-//         console.log(results);
-//     })
-// });
+// newsdb, {
+//     useMongoClient:true
+// }
 
 // Starting our Express app
 // =============================================================
