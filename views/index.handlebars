@@ -5,11 +5,13 @@
     </div>
     <div class="card-stacked">
         <div class="card-content">
-            <a href="{{url}}">{{title}}</a>
-            <div>{{author}}</div>
-            <div id="artDate">{{pubDate}}</div>
-            <div id="artBlurb">{{blurb}}</div>
-            <div id="artComCount" class="right">{{comments.length}} Comments </div>
+            <h4> <a href="{{url}}">{{title}}</a> </h2>
+                <div>{{author}}</div>
+                <h6>
+                    <div id="artDate">{{pubDate}}</div>
+                </h6>
+                <div id="artBlurb">{{blurb}}</div>
+                <div id="artComCount" class="right">{{comments.length}} Comments </div>
         </div>
         <div class="card-action">
             <ul class="collapsible" data-collapsible="expandable">
@@ -19,14 +21,20 @@
                     </div>
                     <div class="collapsible-body">
                         {{#each comments}}
-                        <div>{{user}}</div>
-                        <div>{{body}}</div>
-                        <div>{{date}}</div>
-                        <form action="/delete" method="POST">
-                            <input type="hidden" name="commentId" value={{id}}>
-                            <input type="hidden" name="articleId" value={{../id}}>
-                            <button type="submit">Delete</button>
-                        </form>
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <div class="card-title">{{user}}</div>
+                                <div>{{date}}</div>
+                                <div>{{body}}</div>
+                            </div>
+                            <div class="card-action">
+                                <form action="/delete" method="POST">
+                                    <input type="hidden" name="commentId" value={{id}}>
+                                    <input type="hidden" name="articleId" value={{../id}}>
+                                    <button type="submit" class="btn red">Delete</button>
+                                </form>
+                            </div>
+                        </div>
                         {{/each}}
                         <form action="/postComment" method="POST">
 
